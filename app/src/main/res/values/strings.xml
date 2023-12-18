@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SubmissionCompose</string>
+    <string name="search_placeholder">Search Games</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_favorite">Favorite</string>
+    <string name="menu_profile">profile</string>
 </resources>
