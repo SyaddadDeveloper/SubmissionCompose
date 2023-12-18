@@ -4,4 +4,6 @@
     <string name="menu_home">Home</string>
     <string name="menu_favorite">Favorite</string>
     <string name="menu_profile">profile</string>
+    <string name="back">Back</string>
+    <string name="empty_favorite">No Game favorite</string>
 </resources>

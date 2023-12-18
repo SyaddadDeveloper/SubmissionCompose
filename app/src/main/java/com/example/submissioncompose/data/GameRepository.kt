@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.flow
 
 class GameRepository {
     private val gameItem = mutableListOf<GameItem>()
+    private val gameFavorite = mutableListOf<String>()
 
     init {
         if (gameItem.isEmpty()) {
@@ -30,6 +31,33 @@ class GameRepository {
                 it.item.gameName.contains(query, ignoreCase = true)
             }
             emit(filteredGames)
+        }
+    }
+
+    fun getGameItemById(gameId: String): GameItem {
+        return gameItem.first {
+            it.item.id == gameId
+        }
+    }
+
+    fun addToFavorites(gameId: String) {
+        if (!gameFavorite.contains(gameId)) {
+            gameFavorite.add(gameId)
+        }
+    }
+
+    fun removeFromFavorites(gameId: String) {
+        gameFavorite.remove(gameId)
+    }
+
+    fun isFavorite(gameId: String): Boolean {
+        return gameFavorite.contains(gameId)
+    }
+
+    fun getGamesFavorite(): Flow<List<GameItem>> {
+        return flow {
+            val favoriteGameItems = gameItem.filter { it.item.id in gameFavorite}
+            emit(favoriteGameItems)
         }
     }
 

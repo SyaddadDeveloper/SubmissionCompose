@@ -10,17 +10,19 @@ object GamesData {
             "FREE",
             "Valve",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/570/header.jpg?t=1702685169",
-            "10 Juli 2013"
+            "10 Juli 2013",
+            "https://store.steampowered.com/app/570/Dota_2/"
         ),
 
         Game(
             "2",
-            "Forza Horizon",
+            "Forza Horizon 5",
             "Your Ultimate Horizon Adventure awaits! Explore the vibrant open world landscapes of Mexico with limitless, fun driving action in the world’s greatest cars. Conquer the rugged Sierra Nueva in the ultimate Horizon Rally experience. Requires Forza Horizon 5 game, expansion sold separately.",
             "Rp 349.500",
             "Playground Games",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg?t=1702576144",
-            "9 Nov, 2021"
+            "9 Nov, 2021",
+            "https://store.steampowered.com/app/1551360/Forza_Horizon_5/"
         ),
 
         Game(
@@ -30,7 +32,8 @@ object GamesData {
             "Rp 339.291",
             "Frozen District, Empyrean",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/1190970/header.jpg?t=1702674942",
-            "14 Dec, 2023"
+            "14 Dec, 2023",
+            "https://store.steampowered.com/app/1190970/House_Flipper_2/"
         ),
         Game(
             "4",
@@ -39,7 +42,8 @@ object GamesData {
             "Rp 759.000",
             "Frozen District, Empyrean",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/2195250/header.jpg?t=1702408161",
-            "28 Sep, 2023"
+            "28 Sep, 2023",
+            "https://store.steampowered.com/app/2195250/EA_SPORTS_FC_24/"
         ),
         Game(
             "5",
@@ -48,7 +52,8 @@ object GamesData {
             "Rp 110.549",
             "CAPCOM Co., Ltd.",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/582010/header.jpg?t=1702858458",
-            "8 Aug, 2018"
+            "8 Aug, 2018",
+            "https://store.steampowered.com/app/582010/Monster_Hunter_World/"
         ),
 
         Game(
@@ -58,7 +63,8 @@ object GamesData {
             "Free",
             "Gaijin Entertainment",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/236390/header.jpg?t=1702564009",
-            "15 Aug, 2013"
+            "15 Aug, 2013",
+            "https://store.steampowered.com/app/236390/War_Thunder/"
         ),
         Game(
             "7",
@@ -67,7 +73,8 @@ object GamesData {
             "Free",
             "Expansive Worlds",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/518790/header.jpg?t=1702376841",
-            "16 Feb, 2017"
+            "16 Feb, 2017",
+            "https://store.steampowered.com/app/518790/theHunter_Call_of_the_Wild/"
         ),
         Game(
             "8",
@@ -76,7 +83,8 @@ object GamesData {
             "Free",
             "Respawn Entertainment",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/1172470/header.jpg?t=1702571386",
-            "5 Nov, 2020"
+            "5 Nov, 2020",
+            "https://store.steampowered.com/app/1172470/Apex_Legends/"
         ),
         Game(
             "9",
@@ -85,7 +93,8 @@ object GamesData {
             "Rp 768.900",
             "Cygames, Inc., Arc System Works",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/2157560/header.jpg?t=1702871156",
-            "14 Dec, 2023"
+            "14 Dec, 2023",
+            "https://store.steampowered.com/app/2157560/Granblue_Fantasy_Versus_Rising/"
         ),
         Game(
             "10",
@@ -94,7 +103,8 @@ object GamesData {
             "Rp 768.900",
             "CAPCOM Co., Ltd.",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/582010/header.jpg?t=1702858458",
-            "8 Aug, 2018"
+            "8 Aug, 2018",
+            "https://store.steampowered.com/app/582010/Monster_Hunter_World/"
         ),
         Game(
             "11",
@@ -103,7 +113,8 @@ object GamesData {
             "Rp 132.799",
             "MINTROCKET",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/1868140/header.jpg?t=1702627876",
-            "28 Jun, 2023"
+            "28 Jun, 2023",
+            "https://store.steampowered.com/app/1868140/DAVE_THE_DIVER/"
         ),
         Game(
             "12",
@@ -112,7 +123,8 @@ object GamesData {
             "Free",
             "Bungie",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/1085660/header.jpg?t=1702506550",
-            "1 Oct, 2019"
+            "1 Oct, 2019",
+            ""
         ),
         Game(
             "13",
@@ -121,7 +133,8 @@ object GamesData {
             "Rp 205.000",
             "Ubisoft Montreal",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/359550/header.jpg?t=1702416413",
-            "2 Dec, 2015"
+            "2 Dec, 2015",
+            "https://store.steampowered.com/app/1085660/Destiny_2/"
         ),
         Game(
             "14",
@@ -130,7 +143,8 @@ object GamesData {
             "Rp 231.600",
             "Square Enix, PlatinumGames Inc.",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/524220/header.jpg?t=1696405478",
-            "17 Mar, 2017"
+            "17 Mar, 2017",
+            "https://store.steampowered.com/app/524220/NieRAutomata/"
         ),
         Game(
             "15",
@@ -139,7 +153,8 @@ object GamesData {
             "Rp 143.500",
             "Recreate Games",
             "https://cdn.cloudflare.steamstatic.com/steam/apps/1260320/header.jpg?t=1701692409",
-            "20 Sep, 2023"
+            "20 Sep, 2023",
+            "https://store.steampowered.com/app/1260320/Party_Animals/"
         ),
     )
 }

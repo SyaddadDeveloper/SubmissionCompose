@@ -20,12 +20,16 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.submissioncompose.navigation.BottomBarItem
 import com.example.submissioncompose.navigation.Screen
+import com.example.submissioncompose.ui.screen.detail.DetailScreen
+import com.example.submissioncompose.ui.screen.favorite.FavoriteScreen
 import com.example.submissioncompose.ui.screen.home.HomeScreen
 import com.example.submissioncompose.ui.theme.SubmissionComposeTheme
 
@@ -49,7 +53,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GameListApp(
     modifier: Modifier = Modifier,
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController = rememberNavController(),
 ) {
 
     Scaffold(
@@ -69,6 +73,28 @@ fun GameListApp(
                 HomeScreen(navigateToDetail = { gameId ->
                     navController.navigate(Screen.DetailGame.createRoute(gameId))
                 })
+            }
+
+            composable(
+                route = Screen.DetailGame.route,
+                arguments = listOf(navArgument("gameId") { type = NavType.StringType })
+            ) {
+                val id = it.arguments?.getString("gameId") ?: ""
+                DetailScreen(
+                    gameId = id,
+                    navigateBack = { navController.navigateUp() }
+                )
+            }
+
+            composable(
+                route = Screen.Favorite.route
+            ) {
+                FavoriteScreen(
+                    navigateBack = { navController.navigateUp() },
+                    navigateToDetail = { gameID ->
+                        navController.navigate(Screen.DetailGame.createRoute(gameID))
+                    }
+                )
             }
         }
     }

@@ -8,4 +8,5 @@ data class Game(
     val developer: String,
     val bannerUrl: String,
     val releaseDate: String,
+    val gameLink: String
 )
