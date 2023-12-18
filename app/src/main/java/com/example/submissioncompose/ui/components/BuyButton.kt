@@ -12,8 +12,8 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun Buy(
-    text: String,
+fun BuyButton(
+    buttonText: String,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -24,7 +24,7 @@ fun Buy(
             .height(50.dp)
     ) {
         Text(
-            text = text,
+            text = buttonText,
             modifier = Modifier.align(Alignment.CenterVertically)
         )
     }

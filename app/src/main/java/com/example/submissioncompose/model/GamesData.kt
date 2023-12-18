@@ -98,13 +98,13 @@ object GamesData {
         ),
         Game(
             "10",
-            "Monster Hunter: World",
-            "Welcome to a new world! In Monster Hunter: World, the latest installment in the series, you can enjoy the ultimate hunting experience, using everything at your disposal to hunt monsters in a new world teeming with surprises and excitement.",
-            "Rp 768.900",
-            "CAPCOM Co., Ltd.",
-            "https://cdn.cloudflare.steamstatic.com/steam/apps/582010/header.jpg?t=1702858458",
-            "8 Aug, 2018",
-            "https://store.steampowered.com/app/582010/Monster_Hunter_World/"
+            "Cities: Skylines II",
+            "Raise a city from the ground up and transform it into a thriving metropolis with the most realistic city builder ever. Push your creativity and problem-solving to build on a scale you've never experienced. With deep simulation and a living economy, this is world-building without limits.",
+            "Rp 536.999",
+            "Colossal Order Ltd.",
+            "https://cdn.cloudflare.steamstatic.com/steam/apps/949230/header.jpg?t=1701874564",
+            "24 Oct, 2023",
+            "https://store.steampowered.com/app/949230/Cities_Skylines_II/"
         ),
         Game(
             "11",

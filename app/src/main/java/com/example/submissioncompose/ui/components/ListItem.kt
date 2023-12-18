@@ -16,7 +16,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 
@@ -31,7 +30,7 @@ fun ListItem(
             defaultElevation = 6.dp
         ),
         modifier = modifier.width(190.dp),
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.background,
         ),
@@ -40,16 +39,16 @@ fun ListItem(
             AsyncImage(
                 model = bannerUrl,
                 contentDescription = "banner",
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.FillBounds,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(170.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .clip(RoundedCornerShape(10.dp)),
             )
             Column(modifier = Modifier.padding(8.dp)) {
                 Text(
                     text = gameName,
-                    maxLines = 2,
+                    maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.ExtraBold
@@ -57,13 +56,5 @@ fun ListItem(
                 )
             }
         }
-    }
-}
-
-@Composable
-@Preview(showBackground = true)
-fun ListItemPreview() {
-    MaterialTheme {
-        ListItem(gameName = "Dota 2", bannerUrl = "", modifier = Modifier.padding(8.dp))
     }
 }

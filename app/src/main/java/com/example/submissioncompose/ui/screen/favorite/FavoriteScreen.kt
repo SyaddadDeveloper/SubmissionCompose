@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -77,7 +78,9 @@ fun FavoriteContent(
     navigateToDetail: (String) -> Unit,
 ) {
     Column(
-        modifier = modifier.padding(8.dp)
+        modifier = modifier
+            .padding(15.dp)
+
     ) {
         Box {
             Row(
@@ -106,11 +109,12 @@ fun FavoriteContent(
                 Text(
                     text = stringResource(R.string.empty_favorite),
                     modifier = Modifier
-                        .padding(15.dp)
-                        .fillMaxWidth()
+                        .fillMaxSize()
+                        .padding(top = 300.dp)
                         .testTag("EmptyFavoriteText"),
+
                     color = Color.LightGray,
-                    textAlign = TextAlign.Justify
+                    textAlign = TextAlign.Center,
                 )
             } else {
                 LazyVerticalGrid(

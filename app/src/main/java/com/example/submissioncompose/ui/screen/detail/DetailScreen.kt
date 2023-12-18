@@ -5,16 +5,13 @@ import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -34,16 +31,18 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.AsyncImage
 import com.example.submissioncompose.R
 import com.example.submissioncompose.ViewModelFactory
 import com.example.submissioncompose.di.Injection
 import com.example.submissioncompose.ui.common.UiState
-import com.example.submissioncompose.ui.components.Buy
+import com.example.submissioncompose.ui.components.BuyButton
 
 
 @Composable
@@ -93,7 +92,7 @@ fun DetailScreen(
                             isFavorite.value = true
                         }
                     },
-                    buttonShare = {
+                    buttonBuy = {
                         val intent =
                             Intent(
                                 Intent.ACTION_VIEW,
@@ -121,7 +120,7 @@ fun DetailContent(
     onBackClick: () -> Unit,
     isFavorite: Boolean,
     onToggleFavorite: () -> Unit,
-    buttonShare: () -> Unit,
+    buttonBuy: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(modifier = modifier) {
@@ -130,35 +129,15 @@ fun DetailContent(
                 .verticalScroll(rememberScrollState())
                 .weight(1f)
         ) {
-            Box {
-                Row(
-                    modifier = modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Icon(
-                        imageVector = ImageVector.vectorResource(id = R.drawable.ic_baseline_arrow_back_ios_24),
-                        tint = Color.Black,
-                        contentDescription = stringResource(R.string.back),
-                        modifier = Modifier
-                            .padding(16.dp)
-                            .clickable { onBackClick() }
-                    )
-                    IconButton(
-                        onClick = { onToggleFavorite() },
-                        modifier = modifier.padding(top = 4.dp)
-                    ) {
-                        val icon =
-                            if (isFavorite) ImageVector.vectorResource(id = R.drawable.ic_baseline_favorite_24) else ImageVector.vectorResource(
-                                id = R.drawable.ic_baseline_favorite_border_24
-                            )
-                        Icon(
-                            imageVector = icon,
-                            tint = if (isFavorite) MaterialTheme.colorScheme.primary else Color.Black,
-                            contentDescription = stringResource(R.string.menu_favorite),
-                        )
-                    }
-                }
-            }
+            Icon(
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_baseline_arrow_back_ios_24),
+                tint = Color.Black,
+                contentDescription = stringResource(R.string.back),
+                modifier = Modifier
+                    .padding(16.dp)
+                    .clickable { onBackClick() }
+            )
+
             AsyncImage(
                 model = gameBanner,
                 contentDescription = "game banner",
@@ -169,26 +148,61 @@ fun DetailContent(
                     .fillMaxWidth()
                     .clip(
                         RoundedCornerShape(
-                            bottomStart = 10.dp,
-                            bottomEnd = 10.dp,
                             topStart = 10.dp,
                             topEnd = 10.dp
                         )
                     )
             )
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 8.dp, bottom = 16.dp)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp)
             ) {
                 Text(
-                    text = "Game Name: $gameName",
+                    text = gameName,
                     textAlign = TextAlign.Left,
-
+                    modifier = Modifier
+                        .weight(1f),
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 36.sp,
+                        color = Color.Black
                     )
 
+                )
+                IconButton(
+                    modifier = Modifier.padding(end = 10.dp),
+                    onClick = { onToggleFavorite() }
+
+                ) {
+                    val icon =
+                        if (isFavorite) ImageVector.vectorResource(id = R.drawable.ic_baseline_favorite_24) else ImageVector.vectorResource(
+                            id = R.drawable.ic_baseline_favorite_border_24
+                        )
+                    Icon(
+                        imageVector = icon,
+                        tint = if (isFavorite) MaterialTheme.colorScheme.primary else Color.Black,
+                        contentDescription = stringResource(R.string.menu_favorite),
+                        modifier = Modifier.size(60.dp)
+                    )
+                }
+            }
+
+            Column(
+                horizontalAlignment = Alignment.Start,
+                modifier = Modifier.padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
+            ) {
+
+
                 Text(
-                    text = "Game Price: $gamePrice",
+                    text = gamePrice,
                     textAlign = TextAlign.Left,
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 24.sp,
+                        color = Color.Red
+                    )
                 )
 
                 Text(
@@ -202,29 +216,15 @@ fun DetailContent(
 
                 Text(
                     text = gameDescription,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Justify,
                     modifier = modifier
                         .padding(top = 5.dp)
-                        .align(Alignment.Start)
                 )
-
-                Spacer(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(5.dp)
-                        .padding(top = 15.dp)
-                        .background(Color.LightGray)
+                BuyButton(
+                    buttonText = "Buy Now",
+                    onClick = { buttonBuy() },
+                    modifier = Modifier.padding(top = 15.dp)
                 )
-                Column(
-                    modifier = modifier.padding(top = 15.dp)
-                ) {
-                    Buy(
-                        text = "Buy Now",
-                        onClick = { buttonShare() }
-                    )
-                }
             }
         }
     }

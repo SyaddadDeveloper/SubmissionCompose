@@ -8,7 +8,7 @@ import com.example.submissioncompose.ui.common.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class FavoriteScreenViewModel(private val repository: GameRepository) : ViewModel() {
@@ -21,12 +21,13 @@ class FavoriteScreenViewModel(private val repository: GameRepository) : ViewMode
 
     fun getAllFavoriteGames() {
         viewModelScope.launch {
-            repository.getGamesFavorite()
-                .catch {
-                    _uiState.value = UiState.Error(it.message.toString())
-                }
-                .collect { favoriteGameItems ->
+                try {
+                    _uiState.value = UiState.Loading
+
+                    val favoriteGameItems = repository.getGamesFavorite().first()
                     _uiState.value = UiState.Success(favoriteGameItems)
+                } catch (e: Exception) {
+                    _uiState.value = UiState.Error("Failed to fetch favorite games: ${e.message}")
                 }
         }
     }
