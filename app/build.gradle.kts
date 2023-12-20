@@ -50,6 +50,9 @@ android {
 }
 
 dependencies {
+    //Library Testing
+    androidTestImplementation("androidx.navigation:navigation-testing:2.7.6")
+
     //Library Splash Screen
     implementation ("androidx.core:core-splashscreen:1.1.0-alpha02")
     //Library AsyncImage

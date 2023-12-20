@@ -35,6 +35,7 @@ import com.example.submissioncompose.ui.screen.splash.SplashScreen
 fun GameListApp(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
+
 ) {
 
     Scaffold(
@@ -47,7 +48,7 @@ fun GameListApp(
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Splash.route,
+            startDestination = Screen.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = Screen.Splash.route) {

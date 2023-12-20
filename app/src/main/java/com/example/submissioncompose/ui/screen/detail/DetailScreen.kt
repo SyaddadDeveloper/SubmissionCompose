@@ -29,6 +29,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
@@ -184,7 +185,7 @@ fun DetailContent(
                         imageVector = icon,
                         tint = if (isFavorite) MaterialTheme.colorScheme.primary else Color.Black,
                         contentDescription = stringResource(R.string.menu_favorite),
-                        modifier = Modifier.size(60.dp)
+                        modifier = Modifier.size(60.dp).testTag("ButtonFavorite")
                     )
                 }
             }
