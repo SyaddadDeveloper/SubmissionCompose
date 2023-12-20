@@ -10,4 +10,6 @@
     <string name="profile_picture">https://avatars.githubusercontent.com/u/134609697</string>
     <string name="profile_email">Syaddad.developer@gmail.com</string>
     <string name="profile_email2">muhammadsyaddad31@gmail.com</string>
+    <string name="share_button">Bagikan %d Game Favorite</string>
+    <string name="share_games">Share Games</string>
 </resources>

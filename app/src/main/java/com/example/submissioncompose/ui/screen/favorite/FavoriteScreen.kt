@@ -25,9 +25,9 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.runtime.getValue
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Divider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -37,7 +37,7 @@ import com.example.submissioncompose.di.Injection
 import com.example.submissioncompose.model.GameItem
 import com.example.submissioncompose.ui.common.UiState
 import com.example.submissioncompose.ui.components.ListItem
-import com.example.submissioncompose.ui.theme.SubmissionComposeTheme
+import com.example.submissioncompose.ui.components.ShareButton
 
 @Composable
 fun FavoriteScreen(
@@ -47,6 +47,7 @@ fun FavoriteScreen(
     ),
     navigateBack: () -> Unit,
     navigateToDetail: (String) -> Unit,
+    onOrderButtonClicked: (String) -> Unit,
 ) {
     val favoriteGames by viewModel.favoriteGames.collectAsState(emptyList())
 
@@ -61,7 +62,8 @@ fun FavoriteScreen(
                     favoriteGames = favoriteGames,
                     modifier = modifier,
                     onBackClick = navigateBack,
-                    navigateToDetail = navigateToDetail
+                    navigateToDetail = navigateToDetail,
+                    onOrderButtonClicked = onOrderButtonClicked
                 )
             }
 
@@ -76,7 +78,12 @@ fun FavoriteContent(
     onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
     navigateToDetail: (String) -> Unit,
+    onOrderButtonClicked: (String) -> Unit,
 ) {
+
+    val shareMessage = stringResource(
+        R.string.share_button, favoriteGames.size
+    )
     Column(
         modifier = modifier
             .padding(15.dp)
@@ -104,18 +111,17 @@ fun FavoriteContent(
                 )
             }
         }
-        Column {
+        Column(modifier = Modifier.fillMaxWidth()) {
             if (favoriteGames.isEmpty()) {
-                Text(
-                    text = stringResource(R.string.empty_favorite),
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(top = 300.dp)
-                        .testTag("EmptyFavoriteText"),
-
-                    color = Color.LightGray,
-                    textAlign = TextAlign.Center,
-                )
+                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Text(
+                        text = stringResource(R.string.empty_favorite),
+                        modifier = Modifier
+                            .testTag("EmptyFavoriteText"),
+                        color = Color.LightGray,
+                        textAlign = TextAlign.Center,
+                    )
+                }
             } else {
                 LazyVerticalGrid(
                     columns = GridCells.Adaptive(160.dp),
@@ -131,21 +137,18 @@ fun FavoriteContent(
                                 navigateToDetail(data.item.id)
                             }
                         )
+                        Divider()
                     }
+
                 }
+                ShareButton(
+                    text = stringResource(R.string.share_button, favoriteGames.size),
+                    onClick = {
+                        onOrderButtonClicked(shareMessage)
+                    },
+                    modifier = Modifier.padding(16.dp)
+                )
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewFavoriteContent() {
-    SubmissionComposeTheme {
-        FavoriteContent(
-            favoriteGames = listOf(),
-            onBackClick = {},
-            navigateToDetail = {}
-        )
     }
 }
