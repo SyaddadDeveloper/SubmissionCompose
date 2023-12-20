@@ -6,4 +6,8 @@
     <string name="menu_profile">profile</string>
     <string name="back">Back</string>
     <string name="empty_favorite">No Game favorite</string>
+    <string name="profile_name">M. Syaddad.G.Al Farez</string>
+    <string name="profile_picture">https://avatars.githubusercontent.com/u/134609697</string>
+    <string name="profile_email">Syaddad.developer@gmail.com</string>
+    <string name="profile_email2">muhammadsyaddad31@gmail.com</string>
 </resources>

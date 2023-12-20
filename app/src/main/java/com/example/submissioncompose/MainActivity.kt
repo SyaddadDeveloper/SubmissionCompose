@@ -28,9 +28,11 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.submissioncompose.navigation.BottomBarItem
 import com.example.submissioncompose.navigation.Screen
+import com.example.submissioncompose.ui.screen.profile.ProfileScreen
 import com.example.submissioncompose.ui.screen.detail.DetailScreen
 import com.example.submissioncompose.ui.screen.favorite.FavoriteScreen
 import com.example.submissioncompose.ui.screen.home.HomeScreen
+import com.example.submissioncompose.ui.screen.splash.SplashScreen
 import com.example.submissioncompose.ui.theme.SubmissionComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,14 +61,20 @@ fun GameListApp(
     Scaffold(
         modifier = modifier,
         bottomBar = {
-            BottomBar(navController = navController)
+            if (!isCurrentRouteSplash(navController.currentBackStackEntryAsState().value?.destination?.route)) {
+                BottomBar(navController = navController)
+            }
         },
     ) { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = Screen.Home.route,
+            startDestination = Screen.Splash.route,
             modifier = Modifier.padding(innerPadding)
         ) {
+            composable(route = Screen.Splash.route) {
+                SplashScreen(navController = navController)
+            }
+
             composable(
                 route = Screen.Home.route
             ) {
@@ -91,9 +99,17 @@ fun GameListApp(
             ) {
                 FavoriteScreen(
                     navigateBack = { navController.navigateUp() },
-                    navigateToDetail = { gameID ->
-                        navController.navigate(Screen.DetailGame.createRoute(gameID))
+                    navigateToDetail = { gameId ->
+                        navController.navigate(Screen.DetailGame.createRoute(gameId))
                     }
+                )
+            }
+
+            composable(
+                route = Screen.Profile.route
+            ) {
+                ProfileScreen(
+                    navigateBack = { navController.navigateUp() }
                 )
             }
         }
@@ -149,4 +165,7 @@ private fun BottomBar(
             )
         }
     }
+}
+private fun isCurrentRouteSplash(route: String?): Boolean {
+    return route == Screen.Splash.route
 }
