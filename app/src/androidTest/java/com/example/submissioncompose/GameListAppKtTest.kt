@@ -11,13 +11,15 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollToIndex
 import androidx.navigation.compose.ComposeNavigator
 import androidx.navigation.testing.TestNavHostController
-import com.example.submissioncompose.model.GamesData
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.submissioncompose.navigation.Screen
 import com.example.submissioncompose.ui.theme.SubmissionComposeTheme
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.runner.RunWith
 
+@RunWith(AndroidJUnit4::class)
 class GameListAppKtTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
@@ -37,15 +39,14 @@ class GameListAppKtTest {
     @Test
     fun navHost_verifyStartDestination() {
         navController.assertCurrentRouteName(Screen.Home.route)
-
     }
 
     @Test
     fun navHost_clickItem_navigatesToDetailWithData() {
         composeTestRule.onNodeWithTag("GameList").performScrollToIndex(2)
-        composeTestRule.onNodeWithText(GamesData.game[4].gameName).performClick()
+        composeTestRule.onNodeWithText("EA SPORTS FC™ 24", ignoreCase = true).performClick()
         navController.assertCurrentRouteName(Screen.DetailGame.route)
-        composeTestRule.onNodeWithText(GamesData.game[4].gameName).assertIsDisplayed()
+        composeTestRule.onNodeWithText("EA SPORTS FC™ 24", ignoreCase = true).assertIsDisplayed()
     }
 
     @Test
@@ -61,7 +62,7 @@ class GameListAppKtTest {
     @Test
     fun navHost_clickItem_navigatesBack() {
         composeTestRule.onNodeWithTag("GameList").performScrollToIndex(2)
-        composeTestRule.onNodeWithText(GamesData.game[4].gameName).performClick()
+        composeTestRule.onNodeWithText("EA SPORTS FC™ 24", ignoreCase = true).performClick()
         navController.assertCurrentRouteName(Screen.DetailGame.route)
         composeTestRule.onNodeWithContentDescription(composeTestRule.activity.getString(R.string.back))
             .performClick()
@@ -70,12 +71,11 @@ class GameListAppKtTest {
 
     @Test
     fun navHost_clickFavorite_rightBackStack() {
-        composeTestRule.onNodeWithText(GamesData.game[4].gameName).performClick()
+        composeTestRule.onNodeWithText("EA SPORTS FC™ 24", ignoreCase = true).performClick()
         navController.assertCurrentRouteName(Screen.DetailGame.route)
-        composeTestRule.onNodeWithTag("ButtonFavorite").performClick()
+        composeTestRule.onNodeWithTag("ButtonFavorite", useUnmergedTree = true).performClick()
         composeTestRule.onNodeWithContentDescription(composeTestRule.activity.getString(R.string.back))
             .performClick()
         navController.assertCurrentRouteName(Screen.Home.route)
     }
-
 }

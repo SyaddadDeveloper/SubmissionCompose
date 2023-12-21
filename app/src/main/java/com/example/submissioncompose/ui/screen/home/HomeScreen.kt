@@ -58,7 +58,8 @@ fun HomeScreen(
                         query = query,
                         onQueryChange = { newQuery ->
                             viewModel.setQuery(newQuery)
-                        }
+                        },
+                        modifier = Modifier.testTag("Search")
                     )
 
                     HomeContent(

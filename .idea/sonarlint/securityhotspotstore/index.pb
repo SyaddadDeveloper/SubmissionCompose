@@ -86,8 +86,6 @@ z
 Japp/src/androidTest/java/com/example/submissioncompose/ScreenAssertions.kt,2\e\2e074f3829e29670f074fae3cd549af810bda0e1
 
 Oapp/src/androidTest/java/com/example/submissioncompose/ComposeRuleExtensions.kt,4\6\4640dee3575a40aec38ea500165b8d23434830e8
-ç
-]app/src/androidTest/java/com/example/submissioncompose/ui/screen/detail/DetailScreenKtTest.kt,c\8\c87e7c843dd9c7b4146476a0671f110e0c561e6b
 Å
 Q.idea/sonarlint/securityhotspotstore/0/b/0b0df2f5e834a80ee802f94e7359eeec19b4bf60,7\b\7b135caf0c4b0db7227feb449131b24e63913120
 Å
